@@ -1,0 +1,15 @@
+train.py --name higherres_compact --protocol cv5 --seeds 0 --loader lazy --frames-dir ../data_cache/frames128_compressed --eval-chunk 16 --require-mps --set width=[16,24,48,80] dim=64 bag=8 batch=4 lr=0.0003 wd=0.03 w_clip=0 split_bag=false mirror=none learnable_palette=false bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_full --protocol official --seeds 0 --set bags_per_epoch=3 epochs=40 patience=8
+baselines.py --which cnn_lstm kinematic_lr kinematic_rf --protocols cv5 official --seeds 0 --name unused
+train.py --name audited_rgb --protocol cv5 --seeds 0 --set input=rgb bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_fixedpal --protocol cv5 --seeds 0 --set learnable_palette=false bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_meanpool --protocol cv5 --seeds 0 --set aggregator=mean bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_nosplit --protocol cv5 --seeds 0 --set split_bag=false w_cons=0 bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_nomotion --protocol cv5 --seeds 0 --set motion=false bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_notf --protocol cv5 --seeds 0 --set temporal=mean bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_noflip --protocol cv5 --seeds 0 --set mirror=none bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_naiveflip --protocol cv5 --seeds 0 --set mirror=naive bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_noclip --protocol cv5 --seeds 0 --set w_clip=0 bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_groups --protocol cv5 --seeds 0 --set input=cpd_groups bags_per_epoch=3 epochs=40 patience=8
+train.py --name audited_full --protocol cv5 --seeds 1 2 --set bags_per_epoch=3 epochs=40 patience=8
+analyze_audited.py

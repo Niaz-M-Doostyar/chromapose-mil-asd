@@ -1,0 +1,2 @@
+train.py --name full --protocol cv5 --seeds 0 --set bags_per_epoch=3 epochs=40 patience=8
+train.py --name full --protocol official --seeds 0 --set bags_per_epoch=3 epochs=40 patience=8

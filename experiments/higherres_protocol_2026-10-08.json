@@ -1,0 +1,13 @@
+{
+  "command": "train.py --name higherres_compact --protocol cv5 --seeds 0 --loader lazy --frames-dir ../data_cache/frames128_compressed --eval-chunk 16 --require-mps --set width=[16,24,48,80] dim=64 bag=8 batch=4 lr=0.0003 wd=0.03 w_clip=0 split_bag=false mirror=none learnable_palette=false bags_per_epoch=3 epochs=40 patience=8",
+  "outer_folds": 5,
+  "seed": 0,
+  "inner_validation": "20 percent stratified child holdout",
+  "threshold": 0.5,
+  "input": "128x96 RGB;8fps;no RGB dilation; compressed lazy chunks",
+  "parameters": 153076,
+  "selection": "minimum inner validation BCE",
+  "target": "Investigate whether retaining resolution improves discrimination;90percent is a target, not a claimed result",
+  "design": "Combined model/preprocessing/training variant, not isolated resolution ablation",
+  "cohort_reuse": "Exploratory samecohort reuse following earlier results"
+}
